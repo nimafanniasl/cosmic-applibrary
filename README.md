@@ -1,79 +1,24 @@
-# Cosmic Application Template
+# Cosmic App Library (WIP Pre-Alpha)
 
-A boilerplate template to get started with GTK, Rust, Meson, Flatpak, Debian made for Cosmic.
+Layer Shell App Library application.
 
-## What does it contains?
+# Building
 
-- A simple window
-- Bunch of useful files that you SHOULD ship with your application on Linux:
-  - Metainfo: describe your application for the different application stores out there;
-  - Desktop: the application launcher;
-  - Icons: This repo contains three icons, a normal, a nightly & monochromatic icon (symbolic) per the GNOME HIG, exported using [App Icon Preview](https://flathub.org/apps/details/org.gnome.design.AppIconPreview).
-- Flatpak Manifest for nightly builds
-- Dual installation support
-- Uses Meson for building the application
-- Bundles the UI files & the CSS using gresources
-- A pre-commit hook to run rustfmt on your code
-- Tests to validate your Metainfo, Schemas & Desktop files
-- Gsettings to store the window state, more settings could be added
-- Gitlab CI to produce flatpak nightlies
-- i18n support
+Cosmic App Library is set up to build a deb and a Nix flake, but it can be built using meson.
 
-## How to init a project ?
-
-The template ships a simple python script to init a project easily. It asks you a few questions and replaces & renames all the necessary files.
-
-The script requires having `git` installed on your system.
-
-You can run it with,
-
-```shell
-python3 create-project.py
+Some Build Dependencies:
+```  
+  cargo,
+  meson,
+  intltool,
+  appstream-util,
+  desktop-file-utils,
+  libxkbcommon-dev,
+  pkg-config,
+  desktop-file-utils,
 ```
 
-```shell
-➜ python3 create-project.py
-Welcome to Cosmic Application Template
-Name: Contrast
-Project Name: contrast
-Application ID (e.g. org.domain.MyAwesomeApp, see: https://developer.gnome.org/ChooseApplicationID/): org.gnome.design.Contrast
-Author: Bilal Elmoussaoui
-Email: bil.elmoussaoui@gmail.com
-```
 
-A new directory named `contrast` containing the generated project
+# Translators
 
-## Building the project
-
-Gnome Builder works well for building the project as a flatpak during development. (It may be helpful to also install rust-analyzer and add it to [PATH](https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary).)
-
-### Builing a deb
-`dpkg-buildpackage -b -d`
-
-### Flatpak CLI
-Make sure you have `flatpak` and `flatpak-builder` installed. Then run the commands below. Replace `<application_id>` with the value you entered during project creation. Please note that these commands are just for demonstration purposes. Normally this would be handled by your IDE, such as GNOME Builder or VS Code with the Flatpak extension.
-
-```
-flatpak install org.gnome.Sdk//42 org.freedesktop.Sdk.Extension.rust-stable//21.08 org.gnome.Platform//42
-flatpak-builder --user flatpak_app build-aux/<application_id>.Devel.json
-```
-
-Once the project is build, run the command below. Replace Replace `<application_id>` and `<project_name>` with the values you entered during project creation. Please note that these commands are just for demonstration purposes. Normally this would be handled by your IDE, such as GNOME Builder or VS Code with the Flatpak extension.
-
-```
-flatpak-builder --run flatpak_app build-aux/<application_id>.Devel.json <project_name>
-```
-
-## Community
-
-Join the  Pop_OS!, GNOME, and gtk-rs communities!
-- [Pop_OS! Mattermost](https://chat.pop-os.org/)
-- [Matrix chat](https://matrix.to/#/#rust:gnome.org): chat with other developers using gtk-rs
-- [Discourse forum](https://discourse.gnome.org/tag/rust): topics tagged with `rust` on the GNOME forum.
-- [GNOME circle](https://circle.gnome.org/): take inspiration from applications and libraries already extending the GNOME ecosystem.
-
-## Credits
-
-- [Gtk Rust Template](https://gitlab.gnome.org/World/Rust/gtk-rust-template/-/tree/master/) is what this project is directly built on top of.
-- [Podcasts](https://gitlab.gnome.org/World/podcasts)
-- [Shortwave](https://gitlab.gnome.org/World/Shortwave)
+Translation files may be found in the i18n directory. New translations may copy the English (en) localization of the project and rename `en` to the desired [ISO 639-1 language code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). Translations may be submitted through GitHub as an issue or pull request. Submissions by email or other means are also acceptable; with the preferred name and email to associate with the changes.
